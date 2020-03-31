@@ -33,6 +33,14 @@ def mean():
 
 	return jsonify({'output':results}), HTTPStatus.OK
 
+@app.route('/geometricmean', methods=['GET'])
+def geometricmean():
+	user_input = request.get_json()['input']
+
+	results = calculator.geometricmean(user_input)
+
+	return jsonify({'output2':results}), HTTPStatus.OK
+
 
 # path = '/median', method = 'GET and POST'
 # request type = Query
@@ -58,7 +66,7 @@ def mode():
 
 
 # path = '/status', method = 'GET'
-@app.route('status', methods=['GET'])
+@app.route('/status')
 def status():
 	result = "Application is running"
 	return result, HTTPStatus.OK
